@@ -1,0 +1,7 @@
+.DS_Store
+.DS_Store?
+node_modules
+vitest
+workspace
+.pnpm-debug.log
+.idea

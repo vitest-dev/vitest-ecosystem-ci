@@ -1,0 +1,53 @@
+{
+  "name": "vitest-ecosystem-ci",
+  "version": "0.0.1",
+  "description": "Vitest Ecosystem CI",
+  "scripts": {
+    "prepare": "pnpm exec simple-git-hooks",
+    "lint": "echo TODO",
+    "lint:fix": "pnpm lint --fix",
+    "format": "prettier --ignore-path .gitignore --check .",
+    "format:fix": "pnpm format --write",
+    "test:self": "echo TODO",
+    "test": "echo TODO",
+    "bisect": "echo TODO"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "packageManager": "pnpm@8.6.3",
+  "type": "module",
+  "engines": {
+    "node": ">=18",
+    "pnpm": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitest-dev/vitest-ecosystem-ci.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vitest-dev/vitest-ecosystem-ci/issues"
+  },
+  "homepage": "https://github.com/vitest-dev/vitest-ecosystem-ci#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "eslint": "^8.43.0",
+    "eslint-define-config": "^1.21.0",
+    "eslint-plugin-n": "^16.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "^5.1.3"
+  }
+}
