@@ -1,0 +1,73 @@
+# integration tests for vitest ecosystem - single run of selected testsuite
+name: vitest-ecosystem-ci-selected
+
+env:
+  # 7 GiB by default on GitHub, setting to 6 GiB
+  # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+  NODE_OPTIONS: --max-old-space-size=6144
+
+on:
+  workflow_dispatch:
+    inputs:
+      refType:
+        description: "type of vitest ref to use"
+        required: true
+        type: choice
+        options:
+          - branch
+          - tag
+          - commit
+          - release
+        default: "branch"
+      ref:
+        description: "vitest ref to use"
+        required: true
+        type: string
+        default: "main"
+      repo:
+        description: "vitest repository to use"
+        required: true
+        type: string
+        default: "vitest-dev/vitest"
+      suite:
+        description: "testsuite to run"
+        required: true
+        type: choice
+        options:
+          - vitest-sonar-reporter
+          - vite
+jobs:
+  execute-selected-suite:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+        id: setup-node
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+        id: setup-deno
+        continue-on-error: true
+      - run: corepack enable
+      - run: pnpm --version
+      - run: pnpm i --frozen-lockfile
+      - run: >-
+          pnpm tsx ecosystem-ci.ts
+          --${{ inputs.refType }} ${{ inputs.ref }}
+          --repo ${{ inputs.repo }}
+          ${{ inputs.suite }}
+        id: ecosystem-ci-run
+      - if: always()
+        run: pnpm tsx discord-webhook.ts
+        env:
+          WORKFLOW_NAME: ci-selected
+          REF_TYPE: ${{ inputs.refType }}
+          REF: ${{ inputs.ref }}
+          REPO: ${{ inputs.repo }}
+          SUITE: ${{ inputs.suite }}
+          STATUS: ${{ job.status }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
