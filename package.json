@@ -4,13 +4,13 @@
   "description": "Vitest Ecosystem CI",
   "scripts": {
     "prepare": "pnpm exec simple-git-hooks",
-    "lint": "echo TODO",
+    "lint": "eslint --ignore-path .gitignore '**/*.ts'",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier --ignore-path .gitignore --check .",
     "format:fix": "pnpm format --write",
-    "test:self": "echo TODO",
-    "test": "echo TODO",
-    "bisect": "echo TODO"
+    "test:self": "tsx ecosystem-ci.ts _selftest",
+    "test": "tsx ecosystem-ci.ts",
+    "bisect": "tsx ecosystem-ci.ts bisect"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --concurrent false"
@@ -38,8 +38,16 @@
     "url": "https://github.com/vitest-dev/vitest-ecosystem-ci/issues"
   },
   "homepage": "https://github.com/vitest-dev/vitest-ecosystem-ci#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "cac": "^6.7.14",
+    "execa": "^7.1.1",
+    "node-fetch": "^3.3.1"
+  },
   "devDependencies": {
+    "@antfu/ni": "^0.21.4",
+    "@types/node": "^18.16.18",
+    "@types/semver": "^7.5.0",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "eslint": "^8.43.0",
@@ -47,7 +55,9 @@
     "eslint-plugin-n": "^16.0.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
+    "semver": "^7.5.2",
     "simple-git-hooks": "^2.8.1",
+    "tsx": "^3.12.7",
     "typescript": "^5.1.3"
   }
 }
