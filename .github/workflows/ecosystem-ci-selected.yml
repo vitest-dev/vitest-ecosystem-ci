@@ -34,6 +34,7 @@ on:
         required: true
         type: choice
         options:
+          - nuxt
           - vitest-sonar-reporter
           - vite
 jobs:

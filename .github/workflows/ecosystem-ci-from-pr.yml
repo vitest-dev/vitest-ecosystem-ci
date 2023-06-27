@@ -29,6 +29,7 @@ on:
         type: choice
         options:
           - "-"
+          - nuxt
           - vite
           - vitest-sonar-reporter
 jobs:
