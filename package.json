@@ -8,9 +8,9 @@
     "lint:fix": "pnpm lint --fix",
     "format": "prettier --ignore-path .gitignore --check .",
     "format:fix": "pnpm format --write",
-    "test:self": "tsx ecosystem-ci.ts _selftest",
-    "test": "tsx ecosystem-ci.ts",
-    "bisect": "tsx ecosystem-ci.ts bisect"
+    "test:self": "tsx --tsconfig ./tsconfig.custom.json ecosystem-ci.ts _selftest",
+    "test": "tsx --tsconfig ./tsconfig.custom.json ecosystem-ci.ts",
+    "bisect": "tsx --tsconfig ./tsconfig.custom.json ecosystem-ci.ts bisect"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --concurrent false"
