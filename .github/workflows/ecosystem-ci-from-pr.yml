@@ -92,6 +92,7 @@ jobs:
     strategy:
       matrix:
         suite:
+          - nuxt
           - vite
           - vitest-sonar-reporter
       fail-fast: false
