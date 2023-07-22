@@ -10,5 +10,6 @@ export async function test(options: RunOptions) {
 		},
 		build: 'build',
 		test: ['test:fixtures', 'test:unit'],
+		beforeTest: ['pnpm playwright-core install chromium'],
 	})
 }
