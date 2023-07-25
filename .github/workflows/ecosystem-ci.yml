@@ -41,8 +41,9 @@ jobs:
       matrix:
         suite:
           - nuxt
-          - vitest-sonar-reporter
           - vite
+          - vitest-sonar-reporter
+          - vitest-github-actions-reporter
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
