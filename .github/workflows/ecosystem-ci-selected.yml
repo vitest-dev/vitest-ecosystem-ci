@@ -35,8 +35,9 @@ on:
         type: choice
         options:
           - nuxt
-          - vitest-sonar-reporter
           - vite
+          - vitest-sonar-reporter
+          - vitest-github-actions-reporter
 jobs:
   execute-selected-suite:
     timeout-minutes: 30
