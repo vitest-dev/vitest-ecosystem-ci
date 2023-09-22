@@ -38,6 +38,7 @@ on:
           - vite
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
+          - vitest-browser-simple
 jobs:
   execute-selected-suite:
     timeout-minutes: 30
