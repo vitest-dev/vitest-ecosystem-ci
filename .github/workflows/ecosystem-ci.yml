@@ -44,6 +44,7 @@ jobs:
           - vite
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
+          - vitest-browser-simple
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
