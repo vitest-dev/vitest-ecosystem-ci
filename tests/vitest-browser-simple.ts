@@ -6,6 +6,6 @@ export async function test(options: RunOptions) {
 		...options,
 		repo: 'vitest-tests/browser-simple',
 		test: 'test',
-		beforeTest: ['pnpm playwright-core install firefox'],
+		beforeTest: ['pnpm playwright install firefox'],
 	})
 }
