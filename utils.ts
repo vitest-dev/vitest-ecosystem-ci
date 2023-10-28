@@ -29,7 +29,6 @@ const VITEST_SUB_PACKAGES = [
 	'snapshot',
 	'ui',
 	'web-worker',
-	'coverage-c8',
 	'coverage-v8',
 	'runner',
 	'spy',
