@@ -30,6 +30,7 @@ on:
         options:
           - "-"
           - nuxt
+          - nuxt-text-utils
           - vite
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
@@ -96,6 +97,7 @@ jobs:
       matrix:
         suite:
           - nuxt
+          - nuxt-text-utils
           - vite
           - vitest-sonar-reporter
           - vitest-github-actions-reporter

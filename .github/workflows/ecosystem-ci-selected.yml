@@ -35,6 +35,7 @@ on:
         type: choice
         options:
           - nuxt
+          - nuxt-text-utils
           - vite
           - vitest-sonar-reporter
           - vitest-github-actions-reporter

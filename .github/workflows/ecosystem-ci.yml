@@ -41,6 +41,7 @@ jobs:
       matrix:
         suite:
           - nuxt
+          - nuxt-text-utils
           - vite
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
