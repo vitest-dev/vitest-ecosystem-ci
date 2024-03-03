@@ -32,6 +32,7 @@ on:
           - nuxt
           - nuxt-test-utils
           - vite
+          - vitest-vscode
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
           - vitest-browser-simple
@@ -100,6 +101,7 @@ jobs:
           - nuxt
           - nuxt-test-utils
           - vite
+          - vitest-vscode
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
           - vitest-browser-simple
