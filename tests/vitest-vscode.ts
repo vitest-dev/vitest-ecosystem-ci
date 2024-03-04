@@ -10,7 +10,7 @@ export async function test(options: RunOptions) {
 		test: async () => {
 			// use execa directly since utils' wrapper seems to have problems with escaping
 			const { $: $_ } = await import('execa')
-			const $ = $_({ stdio: 'inherit', cwd })
+			const $ = $_({ stdio: 'inherit', verbose: true, cwd })
 			if (process.env.CI === 'true' && process.platform === 'linux') {
 				await $`xvfb-run --auto-servernum ${'--server-args=-screen 0 1920x1080x24'} pnpm test`
 			} else {
