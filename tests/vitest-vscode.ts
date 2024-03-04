@@ -9,7 +9,7 @@ export async function test(options: RunOptions) {
 		repo: 'vitest-dev/vscode',
 		test: async () => {
 			if (process.env.CI === 'true' && process.platform === 'linux') {
-				await $`xvfb-run --auto-servernum --server-args='-screen 0 1024x768x24' pnpm test`
+				await $`xvfb-run --auto-servernum --server-args='-screen\\ 0\\ 1024x768x24' pnpm test`
 			} else {
 				await $`pnpm test`
 			}
