@@ -1,4 +1,4 @@
-import { runInRepo, $ } from '../utils'
+import { runInRepo, cwd } from '../utils'
 import { RunOptions } from '../types'
 import process from 'node:process'
 
@@ -8,12 +8,14 @@ export async function test(options: RunOptions) {
 		build: 'compile',
 		repo: 'vitest-dev/vscode',
 		test: async () => {
-			await $`pnpm test`
-			// if (process.env.CI === 'true' && process.platform === 'linux') {
-			// 	await $`xvfb-run --auto-servernum --server-args="-screen\\ 0\\ 1024x768x24" pnpm test`
-			// } else {
-			// 	await $`pnpm test`
-			// }
+			// use execa directly since utils' wrapper seems to have problems with escaping
+			const { $: $_ } = await import('execa')
+			const $ = $_({ stdio: 'inherit', cwd })
+			if (process.env.CI === 'true' && process.platform === 'linux') {
+				await $`xvfb-run --auto-servernum ${'--server-args=-screen 0 1920x1080x24'} pnpm test`
+			} else {
+				await $`pnpm test`
+			}
 		},
 
 		// https://github.com/vitest-dev/vscode/pull/276

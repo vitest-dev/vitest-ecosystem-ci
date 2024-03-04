@@ -62,7 +62,6 @@ jobs:
       - run: pnpm --version
       - run: pnpm i --frozen-lockfile
       - run: >-
-          xvfb-run --auto-servernum --server-args='-screen 0 1920x1080x24'
           pnpm tsx ecosystem-ci.ts
           --${{ inputs.refType }} ${{ inputs.ref }}
           --repo ${{ inputs.repo }}
