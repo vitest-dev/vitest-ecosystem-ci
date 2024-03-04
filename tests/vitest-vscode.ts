@@ -8,11 +8,12 @@ export async function test(options: RunOptions) {
 		build: 'compile',
 		repo: 'vitest-dev/vscode',
 		test: async () => {
-			if (process.env.CI === 'true' && process.platform === 'linux') {
-				await $`xvfb-run --auto-servernum --server-args='-screen\\ 0\\ 1024x768x24' pnpm test`
-			} else {
-				await $`pnpm test`
-			}
+			await $`pnpm test`
+			// if (process.env.CI === 'true' && process.platform === 'linux') {
+			// 	await $`xvfb-run --auto-servernum --server-args="-screen\\ 0\\ 1024x768x24" pnpm test`
+			// } else {
+			// 	await $`pnpm test`
+			// }
 		},
 
 		// https://github.com/vitest-dev/vscode/pull/276
