@@ -14,8 +14,8 @@ export async function test(options: RunOptions) {
 
 		test: async () => {
 			if (process.env.CI === 'true' && process.platform === 'linux') {
-				await $`xvfb-run --auto-servernum --server-args=-screen\\ 0\\ 1920x1080x24 pnpm test`
-				await $`xvfb-run --auto-servernum --server-args=-screen\\ 0\\ 1920x1080x24 pnpm test-e2e`
+				await $`xvfb-run --auto-servernum --server-args=-screen\\ 0\\ 1024x768x24 pnpm test`
+				await $`xvfb-run --auto-servernum --server-args=-screen\\ 0\\ 1024x768x24 pnpm test-e2e`
 			} else {
 				await $`pnpm test`
 				await $`pnpm test-e2e`
