@@ -1,4 +1,4 @@
-import { runInRepo, cwd, $ } from '../utils'
+import { runInRepo, $ } from '../utils'
 import { RunOptions } from '../types'
 import process from 'node:process'
 
