@@ -19,7 +19,7 @@ import * as semver from 'semver'
 const isGitHubActions = !!process.env.GITHUB_ACTIONS
 
 let vitestPath: string
-export let cwd: string
+let cwd: string
 let env: ProcessEnv
 
 const VITEST_SUB_PACKAGES = [
