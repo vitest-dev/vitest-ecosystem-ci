@@ -5,10 +5,7 @@ import process from 'node:process'
 export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
-		// repo: 'vitest-dev/vscode',
-		// https://github.com/vitest-dev/vscode/pull/276
-		repo: 'hi-ogawa/vitest-vscode',
-		branch: 'test-vscode-e2e',
+		repo: 'vitest-dev/vscode',
 		build: 'compile',
 		test: async () => {
 			if (process.env.CI === 'true' && process.platform === 'linux') {
