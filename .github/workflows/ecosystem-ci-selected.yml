@@ -36,6 +36,7 @@ on:
         options:
           - nuxt
           - nuxt-test-utils
+          - vue
           - vite
           - vitest-vscode
           - vitest-sonar-reporter
