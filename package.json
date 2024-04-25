@@ -23,6 +23,7 @@
       "eslint --fix"
     ]
   },
+  "packageManager": "pnpm@8.6.3",
   "type": "module",
   "engines": {
     "node": ">=18",
