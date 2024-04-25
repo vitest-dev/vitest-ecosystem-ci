@@ -42,6 +42,7 @@ jobs:
         suite:
           - nuxt
           - nuxt-test-utils
+          - excalidraw
           - vue
           - vite
           - vitest-vscode
