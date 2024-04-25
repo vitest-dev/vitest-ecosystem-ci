@@ -31,6 +31,7 @@ on:
           - "-"
           - nuxt
           - nuxt-test-utils
+          - elk
           - excalidraw
           - vue
           - vite
@@ -102,6 +103,7 @@ jobs:
         suite:
           - nuxt
           - nuxt-test-utils
+          - elk
           - excalidraw
           - vue
           - vite
