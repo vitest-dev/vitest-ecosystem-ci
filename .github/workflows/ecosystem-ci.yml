@@ -43,6 +43,7 @@ jobs:
           - nuxt
           - nuxt-test-utils
           - elk
+          - effect
           - excalidraw
           - vue
           - vite
