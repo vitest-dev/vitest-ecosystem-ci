@@ -17,6 +17,7 @@ export interface RunOptions {
 	skipGit?: boolean
 	release?: string
 	agent?: Agent
+	agentVersion?: string
 	build?: Task | Task[]
 	test?: Task | Task[]
 	beforeInstall?: Task | Task[]
