@@ -283,7 +283,7 @@ export async function runInRepo(options: RunOptions & RepoOptions) {
 			...localOverrides,
 		}
 	}
-	await applyPackageOverrides(dir, pkg, overrides)
+	await applyPackageOverrides(dir, pkg, overrides, options.agentVersion)
 	await beforeBuildCommand?.(pkg.scripts)
 	await buildCommand?.(pkg.scripts)
 	if (test) {
@@ -421,12 +421,15 @@ function isLocalOverride(v: string): boolean {
 async function overridePackageManagerVersion(
 	pkg: { [key: string]: any },
 	pm: string,
+	agentVersion?: string,
 ): Promise<boolean> {
-	const versionInUse = pkg.packageManager?.startsWith(`${pm}@`)
-		? pkg.packageManager.substring(pm.length + 1)
-		: await $`${pm} --version`
-	let overrideWithVersion: string | null = null
+	let overrideWithVersion: string | undefined = agentVersion
+
 	if (pm === 'pnpm') {
+		const versionInUse = pkg.packageManager?.startsWith(`${pm}@`)
+			? pkg.packageManager.substring(pm.length + 1)
+			: await $`${pm} --version`
+
 		if (semver.eq(versionInUse, '7.18.0')) {
 			// avoid bug with absolute overrides in pnpm 7.18.0
 			overrideWithVersion = '7.18.1'
@@ -434,8 +437,9 @@ async function overridePackageManagerVersion(
 	}
 	if (overrideWithVersion) {
 		console.warn(
-			`detected ${pm}@${versionInUse} used in ${pkg.name}, changing pkg.packageManager and pkg.engines.${pm} to enforce use of ${pm}@${overrideWithVersion}`,
+			`Changing pkg.packageManager and pkg.engines.${pm} to enforce use of ${pm}@${overrideWithVersion}`,
 		)
+
 		// corepack reads this and uses pnpm @ newVersion then
 		pkg.packageManager = `${pm}@${overrideWithVersion}`
 		if (!pkg.engines) {
@@ -458,6 +462,7 @@ export async function applyPackageOverrides(
 	dir: string,
 	pkg: any,
 	overrides: Overrides = {},
+	agentVersion?: string,
 ) {
 	const useFileProtocol = (v: string) =>
 		isLocalOverride(v) ? `file:${path.resolve(v)}` : v
@@ -479,7 +484,7 @@ export async function applyPackageOverrides(
 	// pnpm@6, pnpm@7 => pnpm
 	const pm = agent?.split('@')[0]
 
-	await overridePackageManagerVersion(pkg, pm)
+	await overridePackageManagerVersion(pkg, pm, agentVersion)
 
 	if (pm === 'pnpm') {
 		if (!pkg.devDependencies) {

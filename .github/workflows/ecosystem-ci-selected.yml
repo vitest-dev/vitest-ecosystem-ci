@@ -37,6 +37,9 @@ on:
           - aria-live-capture
           - nuxt
           - nuxt-test-utils
+          - elk
+          - effect
+          - zustand
           - vue
           - vite
           - vitest-vscode
