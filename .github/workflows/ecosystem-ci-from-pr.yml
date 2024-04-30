@@ -33,6 +33,7 @@ on:
           - nuxt-test-utils
           - elk
           - effect
+          - zustand
           - vue
           - vite
           - vitest-vscode
@@ -105,6 +106,7 @@ jobs:
           - nuxt-test-utils
           - elk
           - effect
+          - zustand
           - vue
           - vite
           - vitest-vscode

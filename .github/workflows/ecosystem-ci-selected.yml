@@ -38,6 +38,7 @@ on:
           - nuxt-test-utils
           - elk
           - effect
+          - zustand
           - vue
           - vite
           - vitest-vscode
