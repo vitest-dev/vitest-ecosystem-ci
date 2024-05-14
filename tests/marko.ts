@@ -6,7 +6,6 @@ export async function test(options: RunOptions) {
 		...options,
 		repo: 'marko-js/examples',
 		dir: 'library-ts',
-		build: 'build',
 		test: 'test',
 		branch: 'master',
 	})
