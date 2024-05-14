@@ -46,6 +46,7 @@ jobs:
           - elk
           - effect
           - zustand
+          - marko
           - vue
           - vite
           - vitest-vscode
