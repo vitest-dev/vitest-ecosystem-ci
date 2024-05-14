@@ -5,8 +5,8 @@ export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
 		repo: 'marko-js/examples',
-		dir: 'examples/library-ts',
-		test: 'test',
+		dir: 'marko',
+		test: 'pnpm --filter library-ts test',
 		branch: 'master',
 	})
 }
