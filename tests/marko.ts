@@ -8,5 +8,6 @@ export async function test(options: RunOptions) {
 		dir: 'library-ts',
 		build: 'build',
 		test: 'test',
+		branch: 'master',
 	})
 }
