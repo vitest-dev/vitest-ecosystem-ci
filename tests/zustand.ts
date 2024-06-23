@@ -6,6 +6,6 @@ export async function test(options: RunOptions) {
 		...options,
 		repo: 'pmndrs/zustand',
 		build: 'build',
-		test: 'test:ci',
+		test: 'test:spec',
 	})
 }
