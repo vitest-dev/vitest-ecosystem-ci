@@ -41,6 +41,7 @@ on:
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
           - vitest-browser-simple
+          - vitest-browser-examples
           - vitest-coverage-large
           - vitest-reporters-large
 jobs:
@@ -112,6 +113,7 @@ jobs:
           - vitest-sonar-reporter
           - vitest-github-actions-reporter
           - vitest-browser-simple
+          - vitest-browser-examples
           - vitest-coverage-large
           - vitest-reporters-large
       fail-fast: false
