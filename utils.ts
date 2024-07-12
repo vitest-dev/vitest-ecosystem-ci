@@ -34,6 +34,7 @@ const VITEST_SUB_PACKAGES = [
 	'spy',
 	'utils',
 	'ws-client',
+	'pretty-format',
 ]
 
 function cd(dir: string) {
