@@ -35,6 +35,7 @@ const VITEST_SUB_PACKAGES = [
 	'utils',
 	'ws-client',
 	'pretty-format',
+	'mocker',
 ]
 
 function cd(dir: string) {
