@@ -55,6 +55,7 @@ jobs:
           - vitest-browser-examples
           - vitest-coverage-large
           - vitest-reporters-large
+          - vitest-benchmark-large
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
