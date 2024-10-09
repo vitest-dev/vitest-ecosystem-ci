@@ -6,6 +6,6 @@ export async function test(options: RunOptions) {
 		...options,
 		repo: 'lerna-lite/lerna-lite',
 		test: 'pnpm test',
-    build: 'build',
+		build: 'build',
 	})
 }
