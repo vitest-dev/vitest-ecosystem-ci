@@ -45,6 +45,7 @@ jobs:
           - nuxt-test-utils
           - elk
           - effect
+          - lerna-lite
           - zustand
           - vue
           - vite
