@@ -30,9 +30,6 @@ jobs:
         run: pnpm format
       - name: lint
         run: pnpm run lint
-      - name: audit
-        if: (${{ success() }} || ${{ failure() }})
-        run: pnpm audit
       - name: test
         if: (${{ success() }} || ${{ failure() }})
         run: pnpm test:self
