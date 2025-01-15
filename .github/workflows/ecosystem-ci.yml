@@ -51,7 +51,6 @@ jobs:
           - vite
           - vitest-vscode
           - vitest-sonar-reporter
-          - vitest-github-actions-reporter
           - vitest-browser-simple
           - vitest-browser-examples
           - vitest-coverage-large
