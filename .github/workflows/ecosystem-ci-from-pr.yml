@@ -40,7 +40,6 @@ on:
           - vite
           - vitest-vscode
           - vitest-sonar-reporter
-          - vitest-browser-simple
           - vitest-browser-examples
           - vitest-coverage-large
           - vitest-reporters-large
@@ -113,7 +112,6 @@ jobs:
           - vite
           - vitest-vscode
           - vitest-sonar-reporter
-          - vitest-browser-simple
           - vitest-browser-examples
           - vitest-coverage-large
           - vitest-reporters-large
