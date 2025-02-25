@@ -46,6 +46,7 @@ on:
           - vitest-coverage-large
           - vitest-reporters-large
           - vitest-benchmark-large
+          - vitest-pool-workers
 jobs:
   init:
     runs-on: ubuntu-latest
