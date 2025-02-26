@@ -51,6 +51,7 @@ on:
           - vitest-coverage-large
           - vitest-reporters-large
           - vitest-benchmark-large
+          - vitest-pool-workers
 jobs:
   execute-selected-suite:
     timeout-minutes: 60
