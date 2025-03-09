@@ -285,7 +285,7 @@ export async function runInRepo(options: RunOptions & RepoOptions) {
 			...localOverrides,
 		}
 	}
-	await applyPackageOverrides(dir, pkg, overrides, options.agentVersion)
+	await applyPackageOverrides(dir, pkg, overrides, options)
 	await beforeBuildCommand?.(pkg.scripts)
 	await buildCommand?.(pkg.scripts)
 	if (test) {
@@ -350,9 +350,12 @@ export async function buildVitest({ verify = false }) {
 	cd(vitestPath)
 	const frozenInstall = getCommand('pnpm', 'frozen')
 	const runBuild = getCommand('pnpm', 'run', ['build'])
+	const runPack = `pnpm -r --filter=./packages/** exec -- pnpm pack`
 	const runTest = getCommand('pnpm', 'run', ['test:ci'])
+
 	await $`${frozenInstall}`
 	await $`${runBuild}`
+	await $`${runPack}`
 	if (verify) {
 		await $`${runTest}`
 	}
@@ -464,7 +467,7 @@ export async function applyPackageOverrides(
 	dir: string,
 	pkg: any,
 	overrides: Overrides = {},
-	agentVersion?: string,
+	options: RunOptions & RepoOptions,
 ) {
 	const useFileProtocol = (v: string) =>
 		isLocalOverride(v) ? `file:${path.resolve(v)}` : v
@@ -486,9 +489,16 @@ export async function applyPackageOverrides(
 	// pnpm@6, pnpm@7 => pnpm
 	const pm = agent?.split('@')[0]
 
-	await overridePackageManagerVersion(pkg, pm, agentVersion)
+	await overridePackageManagerVersion(pkg, pm, options.agentVersion)
 
 	if (pm === 'pnpm') {
+		const version = parseVitestVersion(options.vitestPath)
+
+		for (const key in overrides) {
+			const tar = key.replace('@', '').replace('/', '-')
+			overrides[key] = `${overrides[key]}/${tar}-${version}.tgz`
+		}
+
 		if (!pkg.devDependencies) {
 			pkg.devDependencies = {}
 		}
@@ -542,13 +552,17 @@ export function dirnameFrom(url: string) {
 	return path.dirname(fileURLToPath(url))
 }
 
-export function parseVitestMajor(vitestPath: string): number {
+export function parseVitestVersion(vitestPath: string): string {
 	const content = fs.readFileSync(
 		path.join(vitestPath, 'packages', 'vitest', 'package.json'),
 		'utf-8',
 	)
 	const pkg = JSON.parse(content)
-	return parseMajorVersion(pkg.version)
+	return pkg.version
+}
+
+export function parseVitestMajor(vitestPath: string): number {
+	return parseMajorVersion(parseVitestVersion(vitestPath))
 }
 
 export function parseMajorVersion(version: string) {
