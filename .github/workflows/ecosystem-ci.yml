@@ -49,6 +49,7 @@ jobs:
           - effect
           - lerna-lite
           - zustand
+          - sveltejs-cli
           - vue
           - vite
           - vitest-vscode
