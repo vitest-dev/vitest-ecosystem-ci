@@ -6,6 +6,7 @@ export async function test(options: RunOptions) {
 		...options,
 		repo: 'sveltejs/cli',
 		build: 'build',
+		beforeTest: 'pnpm exec playwright install chromium',
 		test: 'pnpm exec vitest --project addons vitest',
 	})
 }
