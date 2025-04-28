@@ -5,8 +5,6 @@ env:
   # 7 GiB by default on GitHub, setting to 6 GiB
   # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
   NODE_OPTIONS: --max-old-space-size=6144
-  # https://github.com/nodejs/corepack/issues/612#issuecomment-2631462297
-  COREPACK_INTEGRITY_KEYS: '{"npm":[{"expires":"2025-01-29T00:00:00.000Z","keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA","keytype":"ecdsa-sha2-nistp256","scheme":"ecdsa-sha2-nistp256","key":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE1Olb3zMAFFxXKHiIkQO5cJ3Yhl5i6UPp+IhuteBJbuHcA5UogKo0EWtlWwW6KSaKoTNEYL7JlCQiVnkhBktUgg=="},{"expires":null,"keyid":"SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U","keytype":"ecdsa-sha2-nistp256","scheme":"ecdsa-sha2-nistp256","key":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEY6Ya7W++7aUPzvMTrezH6Ycx3c+HOKYCcNGybJZSCJq/fd7Qa8uuAKtdIkUQtQiEKERhAmE5lMMJhP8OkDOa2g=="}]}'
 
 on:
   workflow_dispatch:
@@ -48,6 +46,7 @@ on:
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-workers
+
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -55,13 +54,14 @@ jobs:
       comment-id: ${{ steps.create-comment.outputs.result }}
     steps:
       - id: generate-token
-        uses: tibdex/github-app-token@v1
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         with:
           app_id: ${{ secrets.PR_GITHUB_APP_ID }}
           private_key: ${{ secrets.PR_GITHUB_APP_PRIVATE_KEY }}
           repository: "${{ github.repository_owner }}/vitest"
+
       - id: create-comment
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           result-encoding: string
@@ -83,14 +83,19 @@ jobs:
     needs: init
     if: "inputs.suite != '-'"
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
         continue-on-error: true
+
       - run: corepack enable
+
       - run: pnpm --version
+
       - run: pnpm i --frozen-lockfile
+
       - run: >-
           pnpm tsx ecosystem-ci.ts
           --branch ${{ inputs.branchName }}
@@ -123,14 +128,19 @@ jobs:
           - vitest-benchmark-large
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
         continue-on-error: true
+
       - run: corepack enable
+
       - run: pnpm --version
+
       - run: pnpm i --frozen-lockfile
+
       - run: >-
           pnpm tsx ecosystem-ci.ts
           --branch ${{ inputs.branchName }}
@@ -143,12 +153,13 @@ jobs:
     if: always()
     steps:
       - id: generate-token
-        uses: tibdex/github-app-token@v1
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         with:
           app_id: ${{ secrets.PR_GITHUB_APP_ID }}
           private_key: ${{ secrets.PR_GITHUB_APP_PRIVATE_KEY }}
           repository: "${{ github.repository_owner }}/vitest"
-      - uses: actions/github-script@v6
+
+      - uses: actions/github-script@v7
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
