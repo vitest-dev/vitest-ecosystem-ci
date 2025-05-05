@@ -46,6 +46,7 @@ on:
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-workers
+          - webcontainer-test
 
 jobs:
   init:
@@ -126,6 +127,7 @@ jobs:
           - vitest-coverage-large
           - vitest-reporters-large
           - vitest-benchmark-large
+          - webcontainer-test
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
