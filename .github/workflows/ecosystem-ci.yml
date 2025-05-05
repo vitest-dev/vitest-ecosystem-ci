@@ -58,6 +58,7 @@ jobs:
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-workers
+          - webcontainer-test
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
