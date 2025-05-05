@@ -58,6 +58,7 @@ jobs:
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-workers
+          - vitest-in-webcontainer
           - webcontainer-test
       fail-fast: false
     steps:
