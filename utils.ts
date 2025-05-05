@@ -267,6 +267,11 @@ export async function runInRepo(options: RunOptions & RepoOptions) {
 			)
 		} else {
 			overrides.vitest = options.release
+			overrides['vite-node'] = options.release
+
+			VITEST_SUB_PACKAGES.forEach((packageName) => {
+				overrides[`@vitest/${packageName}`] = options.release || ''
+			})
 		}
 	} else {
 		overrides.vitest ||= `${options.vitestPath}/packages/vitest`
@@ -492,11 +497,13 @@ export async function applyPackageOverrides(
 	await overridePackageManagerVersion(pkg, pm, options.agentVersion)
 
 	if (pm === 'pnpm') {
-		const version = parseVitestVersion(options.vitestPath)
+		const version = options.release || parseVitestVersion(options.vitestPath)
 
-		for (const key in overrides) {
-			const tar = key.replace('@', '').replace('/', '-')
-			overrides[key] = `${overrides[key]}/${tar}-${version}.tgz`
+		if (!options.release) {
+			for (const key in overrides) {
+				const tar = key.replace('@', '').replace('/', '-')
+				overrides[key] = `${overrides[key]}/${tar}-${version}.tgz`
+			}
 		}
 
 		if (!pkg.devDependencies) {
