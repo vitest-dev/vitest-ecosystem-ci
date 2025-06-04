@@ -5,7 +5,7 @@ export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
 		repo: 'stackblitz/webcontainer-test',
-		branch: 'main',
+		branch: 'chore/vitest-3.2.0',
 		build: 'build',
 		test: 'test',
 		beforeTest:
