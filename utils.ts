@@ -521,6 +521,15 @@ export async function applyPackageOverrides(
 			...overrides,
 		}
 	} else if (pm === 'yarn') {
+		const version = options.release || parseVitestVersion(options.vitestPath)
+
+		if (!options.release) {
+			for (const key in overrides) {
+				const tar = key.replace('@', '').replace('/', '-')
+				overrides[key] = `${overrides[key]}/${tar}-${version}.tgz`
+			}
+		}
+
 		pkg.resolutions = {
 			...pkg.resolutions,
 			...overrides,
