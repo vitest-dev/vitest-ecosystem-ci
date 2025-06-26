@@ -4,6 +4,7 @@ import { RunOptions } from '../types'
 export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
+		build: 'yarn tsc --build --emitDeclarationOnly',
 		repo: 'honojs/middleware',
 		test: 'test',
 	})
