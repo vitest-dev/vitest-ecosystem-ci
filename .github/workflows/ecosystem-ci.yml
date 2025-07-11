@@ -46,6 +46,7 @@ jobs:
           - nuxt-test-utils
           - elk
           - effect
+          - hono
           - lerna-lite
           - zustand
           - sveltejs-cli
