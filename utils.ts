@@ -270,7 +270,6 @@ export async function runInRepo(options: RunOptions & RepoOptions) {
 			)
 		} else {
 			overrides.vitest = options.release
-			overrides['vite-node'] = options.release
 
 			VITEST_SUB_PACKAGES.forEach((packageName) => {
 				overrides[`@vitest/${packageName}`] = options.release || ''
@@ -278,7 +277,6 @@ export async function runInRepo(options: RunOptions & RepoOptions) {
 		}
 	} else {
 		overrides.vitest ||= `${options.vitestPath}/packages/vitest`
-		overrides['vite-node'] ||= `${options.vitestPath}/packages/vite-node`
 
 		VITEST_SUB_PACKAGES.forEach((packageName) => {
 			overrides[
