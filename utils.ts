@@ -24,18 +24,21 @@ let env: ProcessEnv
 
 const VITEST_SUB_PACKAGES = [
 	'browser',
+	'browser-playwright',
+	'browser-preview',
+	'browser-webdriverio',
 	'coverage-istanbul',
-	'expect',
-	'snapshot',
-	'ui',
-	'web-worker',
 	'coverage-v8',
-	'runner',
-	'spy',
-	'utils',
-	'ws-client',
-	'pretty-format',
+	'expect',
 	'mocker',
+	'pretty-format',
+	'runner',
+	'snapshot',
+	'spy',
+	'ui',
+	'utils',
+	'web-worker',
+	'ws-client',
 ]
 
 function cd(dir: string) {
