@@ -46,6 +46,7 @@ on:
           - vitest-coverage-large
           - vitest-reporters-large
           - vitest-benchmark-large
+          - vitest-pool-example
           - vitest-pool-workers
           - vitest-in-webcontainer
           - webcontainer-test
@@ -118,6 +119,7 @@ jobs:
           - nuxt-test-utils
           - elk
           - effect
+          - hono
           - lerna-lite
           - zustand
           - sveltejs-cli
@@ -129,6 +131,8 @@ jobs:
           - vitest-coverage-large
           - vitest-reporters-large
           - vitest-benchmark-large
+          - vitest-pool-example
+          - vitest-pool-workers
           - vitest-in-webcontainer
           - webcontainer-test
       fail-fast: false

@@ -51,6 +51,7 @@ on:
           - vitest-coverage-large
           - vitest-reporters-large
           - vitest-benchmark-large
+          - vitest-pool-example
           - vitest-pool-workers
           - vitest-in-webcontainer
           - webcontainer-test
