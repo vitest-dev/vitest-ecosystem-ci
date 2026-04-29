@@ -38,7 +38,6 @@ const VITEST_SUB_PACKAGES = [
 	'ui',
 	'utils',
 	'web-worker',
-	'ws-client',
 ]
 
 function cd(dir: string) {
