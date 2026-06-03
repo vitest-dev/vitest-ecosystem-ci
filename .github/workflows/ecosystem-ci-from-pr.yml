@@ -65,7 +65,7 @@ jobs:
           repository: "${{ github.repository_owner }}/vitest"
 
       - id: create-comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           result-encoding: string
@@ -87,9 +87,9 @@ jobs:
     needs: init
     if: "inputs.suite != '-'"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 22
         continue-on-error: true
@@ -137,9 +137,9 @@ jobs:
           - webcontainer-test
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 22
         continue-on-error: true
@@ -168,7 +168,7 @@ jobs:
           private_key: ${{ secrets.PR_GITHUB_APP_PRIVATE_KEY }}
           repository: "${{ github.repository_owner }}/vitest"
 
-      - uses: actions/github-script@v7
+      - uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
