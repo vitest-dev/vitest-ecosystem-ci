@@ -32,7 +32,6 @@ const VITEST_SUB_PACKAGES = [
 	'expect',
 	'mocker',
 	'pretty-format',
-	'runner',
 	'snapshot',
 	'spy',
 	'ui',
