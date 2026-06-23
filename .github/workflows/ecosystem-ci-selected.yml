@@ -54,7 +54,6 @@ on:
           - vitest-pool-example
           - vitest-pool-workers
           - vitest-in-webcontainer
-          - webcontainer-test
 
 jobs:
   execute-selected-suite:
