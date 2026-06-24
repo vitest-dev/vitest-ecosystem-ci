@@ -555,6 +555,7 @@ export async function applyPackageOverrides(
 
 	// use of `ni` command here could cause lockfile violation errors so fall back to native commands that avoid these
 	if (pm === 'pnpm') {
+		await $`pnpm config set dangerouslyAllowAllBuilds true`
 		await $`pnpm install --prefer-frozen-lockfile --prefer-offline --strict-peer-dependencies false`
 	} else if (pm === 'yarn') {
 		await $`yarn install`
