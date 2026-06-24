@@ -32,6 +32,7 @@ on:
           - aria-live-capture
           - nuxt
           - nuxt-test-utils
+          - chromatic
           - elk
           - effect
           - hono
@@ -116,6 +117,7 @@ jobs:
           - aria-live-capture
           - nuxt
           - nuxt-test-utils
+          - chromatic
           - elk
           - effect
           - hono
