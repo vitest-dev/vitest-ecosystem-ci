@@ -37,6 +37,7 @@ on:
           - aria-live-capture
           - nuxt
           - nuxt-test-utils
+          - chromatic
           - elk
           - effect
           - hono
