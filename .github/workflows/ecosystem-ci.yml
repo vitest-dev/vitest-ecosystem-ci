@@ -44,7 +44,6 @@ jobs:
           - aria-live-capture
           - nuxt-test-utils
           - chromatic
-          - effect
           - vitest-vscode
           - vitest-sonar-reporter
           - vitest-browser-examples
