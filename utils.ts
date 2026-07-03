@@ -26,7 +26,6 @@ const VITEST_SUB_PACKAGES = [
 	'browser',
 	'browser-playwright',
 	'browser-preview',
-	'browser-webdriverio',
 	'coverage-istanbul',
 	'coverage-v8',
 	'expect',
