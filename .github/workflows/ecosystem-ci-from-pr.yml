@@ -10,16 +10,15 @@ on:
   workflow_dispatch:
     inputs:
       prNumber:
-        description: "PR number (e.g. 9887)"
+        description: "PR number (e.g. 9887), only used for sending the comment. Does not affect which PR is actually tested."
         required: true
         type: string
       branchName:
-        description: "vitest branch to use"
+        description: "branch of the PR of the origin, e.g. 'perf/reporter-speed-up'"
         required: true
         type: string
-        default: "main"
       repo:
-        description: "vitest repository to use"
+        description: "vitest repository to use (make sure to change this to fork when testing PRs from forks)"
         required: true
         type: string
         default: "vitest-dev/vitest"
