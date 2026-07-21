@@ -34,7 +34,8 @@ on:
           - vitest-vscode
           - vitest-sonar-reporter
           - vitest-browser-examples
-          - vitest-coverage-large
+          - vitest-coverage-large-browser
+          - vitest-coverage-large-node
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-example
@@ -110,7 +111,8 @@ jobs:
           - vitest-vscode
           - vitest-sonar-reporter
           - vitest-browser-examples
-          - vitest-coverage-large
+          - vitest-coverage-large-browser
+          - vitest-coverage-large-node
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-example
