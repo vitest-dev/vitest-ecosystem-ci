@@ -5,6 +5,7 @@ export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
 		repo: 'vitest-tests/coverage-large',
-		test: 'test',
+		test: 'test:browser',
+		beforeTest: ['pnpm playwright install chromium'],
 	})
 }
