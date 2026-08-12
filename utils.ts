@@ -518,6 +518,8 @@ export async function applyPackageOverrides(
 			...pkg.pnpm.overrides,
 			...overrides,
 		}
+		// Based on Vite ecosystem CI's pnpm workspace override handling.
+		// https://github.com/vitejs/vite-ecosystem-ci/blob/main/utils.ts
 		const pnpmWorkspaceFile = path.join(dir, 'pnpm-workspace.yaml')
 		if (fs.existsSync(pnpmWorkspaceFile)) {
 			let content = await fs.promises.readFile(pnpmWorkspaceFile, 'utf-8')
