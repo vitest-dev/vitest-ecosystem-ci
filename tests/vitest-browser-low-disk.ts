@@ -5,10 +5,10 @@ export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
 		repo: 'vitest-tests/browser-examples',
-		test: 'test:low-disk',
+		test: 'ecosystem-ci:test:low-disk',
 		beforeTest: [
 			'pnpm playwright install chromium',
-			'test:low-disk:before-test 2 150',
+			'ecosystem-ci:before-test:low-disk',
 		],
 	})
 }
