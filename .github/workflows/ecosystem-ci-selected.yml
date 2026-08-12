@@ -40,6 +40,7 @@ on:
           - vitest-vscode
           - vitest-sonar-reporter
           - vitest-browser-examples
+          - vitest-browser-low-disk
           - vitest-coverage-large-browser
           - vitest-coverage-large-node
           - vitest-reporters-large
