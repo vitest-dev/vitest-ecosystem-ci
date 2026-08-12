@@ -1,0 +1,19 @@
+utils.ts
+  s_77dad48daf54ef::t_870cd29bf89513 521-549
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "49f366c099da525fc10bd812c25f60d5e486554a",
+  "prompts": {},
+  "sessions": {
+    "s_77dad48daf54ef": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_00c39cc59ffexHmxkXQ8ztDkuE",
+        "model": "gpt-5.6"
+      },
+      "human_author": "Hiroshi Ogawa <4232207+hi-ogawa@users.noreply.github.com>"
+    }
+  }
+}
