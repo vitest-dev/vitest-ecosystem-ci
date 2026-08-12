@@ -8,7 +8,7 @@ export async function test(options: RunOptions) {
 		test: 'test:low-disk',
 		beforeTest: [
 			'pnpm playwright install chromium',
-			'test:low-disk:before-test 2',
+			'test:low-disk:before-test 2 150',
 		],
 	})
 }
