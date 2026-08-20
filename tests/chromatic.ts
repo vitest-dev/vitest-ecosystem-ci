@@ -8,5 +8,9 @@ export async function test(options: RunOptions) {
 		branch: 'main',
 		test: 'ecosystem-ci',
 		beforeTest: ['pnpm exec playwright install chromium'],
+		overrides: {
+			'@chromatic-com/vitest':
+				'https://pkg.pr.new/@chromatic-com/vitest@1c2d367',
+		},
 	})
 }
