@@ -499,6 +499,8 @@ export async function applyPackageOverrides(
 
 		if (!options.release) {
 			for (const key in overrides) {
+				// only local builds are packed into tarballs, e.g. remote URL overrides are used as-is
+				if (!`${overrides[key]}`.startsWith('file:')) continue
 				const tar = key.replace('@', '').replace('/', '-')
 				overrides[key] = `${overrides[key]}/${tar}-${version}.tgz`
 			}
@@ -554,6 +556,8 @@ export async function applyPackageOverrides(
 
 		if (!options.release) {
 			for (const key in overrides) {
+				// only local builds are packed into tarballs, e.g. remote URL overrides are used as-is
+				if (!`${overrides[key]}`.startsWith('file:')) continue
 				const tar = key.replace('@', '').replace('/', '-')
 				overrides[key] = `${overrides[key]}/${tar}-${version}.tgz`
 			}
