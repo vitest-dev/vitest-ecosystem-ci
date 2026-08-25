@@ -7,6 +7,8 @@ export async function test(options: RunOptions) {
 		repo: 'chromaui-demo/e2e-demo-vitest',
 		branch: 'main',
 		test: 'ecosystem-ci',
-		beforeTest: ['pnpm exec playwright install chromium'],
+		overrides: {
+			'@chromatic-com/vitest': 'https://pkg.pr.new/@chromatic-com/vitest@main',
+		},
 	})
 }
