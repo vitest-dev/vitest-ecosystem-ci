@@ -5,6 +5,6 @@ export async function test(options: RunOptions) {
 	await runInRepo({
 		...options,
 		repo: 'cloudflare/workers-sdk',
-		test: 'pnpm test:ci -F @fixture/vitest-pool-workers',
+		test: 'pnpm test:ci -F @fixture/vitest-plugin-examples',
 	})
 }
