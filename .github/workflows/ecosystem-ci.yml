@@ -53,7 +53,7 @@ jobs:
           - vitest-reporters-large
           - vitest-benchmark-large
           - vitest-pool-example
-          - vitest-plugin
+          - cloudflare-vitest-plugin
           - vitest-in-webcontainer
       fail-fast: false
     steps:
