@@ -549,6 +549,15 @@ export async function applyPackageOverrides(
 					)
 					.join('')}`
 			}
+			if (content.includes('minimumReleaseAge:')) {
+				// disable with comment to avoid error on installation if ecosystem-ci overrides pull in violating updates
+				content = content.replace(
+					/^([ \t]*minimumReleaseAge[ \t]*:)[ \t]*\d+[^\r\n]*$/m,
+					'$1 0 # disabled by ecosystem-ci',
+				)
+			} else {
+				content += '\nminimumReleaseAge: 0 # added by ecosystem-ci'
+			}
 			await fs.promises.writeFile(pnpmWorkspaceFile, content, 'utf-8')
 		}
 	} else if (pm === 'yarn') {
