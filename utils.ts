@@ -558,6 +558,16 @@ export async function applyPackageOverrides(
 			} else {
 				content += '\nminimumReleaseAge: 0 # added by ecosystem-ci'
 			}
+			if (content.includes('trustPolicy:')) {
+				// project settings take precedence over `pnpm config set trustPolicy off`, so disable with comment
+				// to avoid trust downgrade errors if ecosystem-ci overrides pull in packages without provenance
+				content = content.replace(
+					/^([ \t]*trustPolicy[ \t]*:)[^\r\n]*$/m,
+					'$1 off # disabled by ecosystem-ci',
+				)
+			} else {
+				content += '\ntrustPolicy: off # added by ecosystem-ci'
+			}
 			await fs.promises.writeFile(pnpmWorkspaceFile, content, 'utf-8')
 		}
 	} else if (pm === 'yarn') {
