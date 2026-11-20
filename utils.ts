@@ -610,7 +610,7 @@ export async function applyPackageOverrides(
 	if (pm === 'pnpm') {
 		await $`pnpm config set dangerouslyAllowAllBuilds true`
 		await $`pnpm config set trustPolicy off`
-		await $`pnpm install --prefer-frozen-lockfile --prefer-offline --strict-peer-dependencies false`
+		await $`pnpm install --no-frozen-lockfile --prefer-offline --strict-peer-dependencies false`
 	} else if (pm === 'yarn') {
 		await $`yarn install`
 	} else if (pm === 'npm') {
